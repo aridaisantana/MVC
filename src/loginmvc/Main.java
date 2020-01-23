@@ -5,21 +5,23 @@
  */
 package loginmvc;
 
-import javax.swing.JFrame;
+import loginmvc.controller.LogingCommand;
+import loginmvc.persistance.DB.AccountsLoaderDB;
+import loginmvc.view.swing.SwingDisplay;
 
 /**
  *
  * @author usuario
  */
-public class Main extends JFrame{
+public class Main {
 
     
     public static void main(String[] args) {
-        new Main().execute();
-    }
-
-    private void execute() {
-        this.setVisible(true);
+        
+        AccountsLoaderDB loader = new AccountsLoaderDB();
+        SwingDisplay display = new SwingDisplay();
+        display.add(new LogingCommand(display, loader));
+        display.display();
     }
     
 }
